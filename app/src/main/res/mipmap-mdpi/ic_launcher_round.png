@@ -1,0 +1,65 @@
+package py.com.javierovico.marcas
+
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ContentValues
+import android.graphics.Color
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.*
+import com.google.android.material.snackbar.Snackbar
+import com.google.maps.android.SphericalUtil
+import kotlinx.android.synthetic.main.activity_creador_maps.*
+import kotlinx.android.synthetic.main.content_creador_maps.*
+import py.com.javierovico.marcas.basedato.AdminSQLiteOpenHelper
+import py.com.javierovico.marcas.tipodato.Parcela
+import java.text.DecimalFormat
+import java.util.*
+
+class CreadorMaps : AppCompatActivity(), OnMapReadyCallback {
+
+    private lateinit var mapa: GoogleMap
+    private var poligono: Polygon? = null
+    val lista = mutableListOf<Marker>()
+    lateinit var nombreParcela: String
+    var parcelaPadre: Int = -1    //-1-> no sobparcela
+
+
+    override fun onMapReady(m: GoogleMap) {
+        mapa = m
+        mapa.mapType = GoogleMap.MAP_TYPE_HYBRID
+        if(parcelaPadre>0){
+            val parcelaUbicacion = Parcela.optenerParcelaUbicacion(this,parcelaPadre)
+            if(parcelaUbicacion.size <3){
+                Toast.makeText(this,"Esta area esta danhada",Toast.LENGTH_SHORT).show()
+                finish()
+            }else {
+                val builder = LatLngBounds.Builder()
+                parcelaUbicacion.forEach { pun ->
+                    builder.include(pun)
+                }
+                val cu = CameraUpdateFactory.newLatLngBounds(builder.build(),resources.displayMetrics.widthPixels,resources.displayMetrics.heightPixels,20)
+                mapa.moveCamera(cu)
+//                mapa.moveCamera(CameraUpdateFactory.newLatLngBounds(LatLngBounds.Builder().apply {
+//                    parcelaUbicacion.forEach { pun ->
+//                        include(pun)
+//                    }
+//                }.build(), 1))
+                mapa.addPolygon(
+                    PolygonOptions()
+                        .addAll(parcelaUbicacion)
+                        .strokeColor(Color.BLACK)
+                        .fillColor(0x30ff0000)
+                        .strokeWidth(2f)
+                )
+            }
+        }else{
+            mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-22.4270543,-59.7495894), 11f))
+        }
+//        mapa.uiSettings.isZoomControlsEnabled = true
+        mapa.setOnMarkerDragListener(object : GoogleM

@@ -1,13 +1,11 @@
 package com.javierovico.ici
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import com.javierovico.ici.fragmentos.FragmentoInicio
 import com.javierovico.ici.ui.main.SectionsPagerAdapter
 
@@ -28,6 +26,11 @@ class MainActivity : AppCompatActivity(), FragmentoInicio.OnFragmentInteractionL
                 .setAction("Action", null).show()
         }
     }
+
+
+//    override fun onBackPressed() { // Disable going back to the MainActivity
+//        finish()
+//    }
 
     override fun interaccion(uri: String) {
 

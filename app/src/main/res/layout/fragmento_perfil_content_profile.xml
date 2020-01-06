@@ -16,8 +16,8 @@
 
             <TextView
                 style="@style/headerText"
-                android:text="Account Info"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:text="Informacion de la cuenta" />
 
             <RelativeLayout style="@style/profileDetailsLayout">
                 <ImageView
@@ -27,14 +27,15 @@
 
                 <TextView
                     android:id="@+id/nameTextView"
-                    android:text="Name"
+                    style="@style/profileDetailsTextMain"
                     android:layout_toRightOf="@id/nameImageView"
-                style="@style/profileDetailsTextMain" />
+                    android:text="Nombre y apellido" />
 
                 <TextView
-                    android:text="developer"
+                    android:id="@+id/iv_nombre_apellido"
+                    style="@style/profileDetailsMiniText"
                     android:layout_toRightOf="@id/nameImageView"
-                    style="@style/profileDetailsMiniText" />
+                    android:text="Cargando" />
 
             </RelativeLayout>
 
@@ -46,14 +47,15 @@
                     style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="Mobile"
+                    style="@style/profileDetailsTextMain"
                     android:layout_toRightOf="@id/mobileImageView"
-                    style="@style/profileDetailsTextMain"/>
+                    android:text="Telefono" />
 
                 <TextView
-                    android:text="+91-8129999999"
+                    android:id="@+id/iv_telefono"
+                    style="@style/profileDetailsMiniText"
                     android:layout_toRightOf="@id/mobileImageView"
-                    style="@style/profileDetailsMiniText" />
+                    android:text="Cargando" />
 
             </RelativeLayout>
 
@@ -70,9 +72,10 @@
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
-                    android:text="developer@appsnipp.com"
+                    android:id="@+id/iv_email"
+                    style="@style/profileDetailsMiniText"
                     android:layout_toRightOf="@id/emailImageView"
-                    style="@style/profileDetailsMiniText" />
+                    android:text="cargando" />
 
             </RelativeLayout>
 
@@ -84,14 +87,15 @@
                     style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="Address"
+                    style="@style/profileDetailsTextMain"
                     android:layout_toRightOf="@id/addressImageView"
-                    style="@style/profileDetailsTextMain" />
+                    android:text="Cedula" />
 
                 <TextView
-                    android:text="Avenue 2nd Street NW SY."
+                    android:id="@+id/iv_cedula"
+                    style="@style/profileDetailsMiniText"
                     android:layout_toRightOf="@id/addressImageView"
-                    style="@style/profileDetailsMiniText" />
+                    android:text="Cargando" />
 
             </RelativeLayout>
 
@@ -103,18 +107,25 @@
                     style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="D.O.B"
+                    style="@style/profileDetailsTextMain"
                     android:layout_toRightOf="@id/dobImageView"
-                    style="@style/profileDetailsTextMain" />
+                    android:text="Habilitado" />
 
                 <TextView
-                    android:text="12-05-1990"
+                    android:id="@+id/iv_habilitado"
+                    style="@style/profileDetailsMiniText"
                     android:layout_toRightOf="@id/dobImageView"
-                    style="@style/profileDetailsMiniText" />
+                    android:text="Cargando" />
 
             </RelativeLayout>
 
             <View style="@style/proifleDetailsView" />
+
+            <Button
+                android:id="@+id/iv_cerrar_sesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cerrar Sesion" />
 
         </LinearLayout>
 

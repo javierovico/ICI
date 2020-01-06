@@ -18,6 +18,26 @@ public class AccessToken {
     Boolean esAdmin;
     @Json(name = "expires_at")
     String expiracion;
+    @Json(name = "cedula")
+    Long cedula;
+    @Json(name = "id")
+    Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(Long cedula) {
+        this.cedula = cedula;
+    }
 
     public Boolean getEsAdmin() {
         return esAdmin;

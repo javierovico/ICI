@@ -30,6 +30,8 @@ public class TokenManager {
         editor.putBoolean("ES_DOCTOR",token.getEsDoctor()).commit();
         editor.putString("EXPIRACION",token.getExpiracion()).commit();
         editor.putBoolean("ES_ADMIN",token.getEsAdmin()).commit();
+        editor.putLong("CEDULA",token.getCedula()).commit();
+        editor.putLong("ID",token.getId()).commit();
     }
 
     public void deleteToken(){
@@ -38,6 +40,8 @@ public class TokenManager {
         editor.remove("ES_DOCTOR").commit();
         editor.remove("EXPIRACION").commit();
         editor.remove("ES_ADMIN").commit();
+        editor.remove("CEDULA").commit();
+        editor.remove("ID").commit();
     }
 
     public AccessToken getToken(){
@@ -47,6 +51,8 @@ public class TokenManager {
         token.setEsDoctor(prefs.getBoolean("ES_DOCTOR",false));
         token.setExpiracion(prefs.getString("EXPIRACION",null));
         token.setEsAdmin(prefs.getBoolean("ES_ADMIN",false));
+        token.setCedula(prefs.getLong("CEDULA",0));
+        token.setId(prefs.getLong("ID",0));
         return token;
     }
 

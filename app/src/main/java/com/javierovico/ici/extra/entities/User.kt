@@ -9,4 +9,5 @@ public class User{
     var telefono: String? = null
     var habilitado: Int? = null
     var doctor: Any? = null
+    var admin: Any? = null
 }

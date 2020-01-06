@@ -36,7 +36,13 @@ class LoginActivity : AppCompatActivity() {
         }
         tokenManager = TokenManager.getInstance(getSharedPreferences("prefs", MODE_PRIVATE))
         if (tokenManager.token.accessToken != null) {
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            if(tokenManager.token?.esAdmin == true){
+                startActivity(Intent(this@LoginActivity, AdminActivity::class.java))
+            }else if(tokenManager.token?.esDoctor == true){
+                startActivity(Intent(this@LoginActivity, MainDoctores::class.java))
+            }else{
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            }
             finish()
         }
     }
@@ -118,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun onLoginSuccess(access: AccessToken?) {
         btn_login.isEnabled = true
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this,if(access?.esAdmin == true){AdminActivity::class.java}else{MainActivity::class.java}))
         finish()
     }
 
